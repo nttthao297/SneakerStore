@@ -143,7 +143,13 @@ public class SneakerRetailApp {
         for (int i = 1; i <= 9; i++) {
             JPanel sneakerInnerPanel = new JPanel(new BorderLayout());
             JButton btnSneaker = new JButton(sneakerNames[i-1]); // Set the desired name from the sneakerNames array
-            sneakerInnerPanel.add(btnSneaker, BorderLayout.SOUTH);
+            JButton btnAddToCart = new JButton("Add to Cart"); // Add button for each sneaker
+
+            JPanel buttonPanel = new JPanel(new BorderLayout());
+            buttonPanel.add(btnSneaker, BorderLayout.CENTER);
+            buttonPanel.add(btnAddToCart, BorderLayout.EAST);
+
+            sneakerInnerPanel.add(buttonPanel, BorderLayout.SOUTH);
             sneakerInnerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add some padding
 
             String imageName = "sneaker" + i + ".jpg"; // Replace with the desired image name format
@@ -157,7 +163,6 @@ public class SneakerRetailApp {
             sneakerPanel.add(sneakerInnerPanel);
         }
 
-// ...
 
         // User Account Panel
         JPanel accountPanel = new JPanel();
