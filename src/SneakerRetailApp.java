@@ -143,7 +143,7 @@ public class SneakerRetailApp {
         for (int i = 1; i <= 9; i++) {
             JPanel sneakerInnerPanel = new JPanel(new BorderLayout());
             JButton btnSneaker = new JButton(sneakerNames[i-1]); // Set the desired name from the sneakerNames array
-            JButton btnAddToCart = new JButton("Add to Cart"); // Add button for each sneaker
+            JButton btnAddToCart = new JButton("Add to Favorite"); // Add button for each sneaker
 
             JPanel buttonPanel = new JPanel(new BorderLayout());
             buttonPanel.add(btnSneaker, BorderLayout.CENTER);
@@ -159,6 +159,14 @@ public class SneakerRetailApp {
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
             JLabel lblSneakerImage = new JLabel(scaledIcon);
             sneakerInnerPanel.add(lblSneakerImage, BorderLayout.CENTER);
+
+            btnSneaker.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    String sneakerName = btnSneaker.getText();
+                    JFrame sneakerFrame = createSneakerFrame(sneakerName);
+                    sneakerFrame.setVisible(true);
+                }
+            });
 
             sneakerPanel.add(sneakerInnerPanel);
         }
@@ -218,6 +226,119 @@ public class SneakerRetailApp {
             }
         }
     }
+
+    private JFrame createSneakerFrame(String sneakerName) {
+        JFrame sneakerFrame = new JFrame(sneakerName);
+        sneakerFrame.setSize(600, 400);
+
+        JPanel sneakerDetailsPanel = new JPanel();
+        sneakerDetailsPanel.setLayout(new GridLayout(13, 1));
+
+        JPanel itemPanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblItem = new JLabel("Item: ");
+        lblItem.setFont(new Font("Arial", Font.BOLD, 18));
+        lblItem.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblItemValue = new JLabel(sneakerName);
+        lblItemValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblItemValue.setHorizontalAlignment(SwingConstants.LEFT);
+        itemPanel.add(lblItem);
+        itemPanel.add(lblItemValue);
+        sneakerDetailsPanel.add(itemPanel);
+
+        JPanel brandPanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblBrand = new JLabel("Brand: ");
+        lblBrand.setFont(new Font("Arial", Font.BOLD, 18));
+        lblBrand.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblBrandValue = new JLabel("Nike"); // Replace with the actual brand value
+        lblBrandValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblBrandValue.setHorizontalAlignment(SwingConstants.LEFT);
+        brandPanel.add(lblBrand);
+        brandPanel.add(lblBrandValue);
+        sneakerDetailsPanel.add(brandPanel);
+
+        JPanel sizePanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblSize = new JLabel("Size: ");
+        lblSize.setFont(new Font("Arial", Font.BOLD, 18));
+        lblSize.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblSizeValue = new JLabel("10"); // Replace with the actual size value
+        lblSizeValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblSizeValue.setHorizontalAlignment(SwingConstants.LEFT);
+        sizePanel.add(lblSize);
+        sizePanel.add(lblSizeValue);
+        sneakerDetailsPanel.add(sizePanel);
+
+        // Add panels for color, condition, price, seller, original price, retail price, and status
+
+        JPanel conditionPanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblCondition = new JLabel("Condition: ");
+        lblCondition.setFont(new Font("Arial", Font.BOLD, 18));
+        lblCondition.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblConditionValue = new JLabel("New"); // Replace with the actual condition value
+        lblConditionValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblConditionValue.setHorizontalAlignment(SwingConstants.LEFT);
+        conditionPanel.add(lblCondition);
+        conditionPanel.add(lblConditionValue);
+        sneakerDetailsPanel.add(conditionPanel);
+
+        JPanel originalPricePanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblOriginalPrice = new JLabel("Original Price: ");
+        lblOriginalPrice.setFont(new Font("Arial", Font.BOLD, 18));
+        lblOriginalPrice.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblOriginalPriceValue = new JLabel("$200"); // Replace with the actual original price value
+        lblOriginalPriceValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblOriginalPriceValue.setHorizontalAlignment(SwingConstants.LEFT);
+        originalPricePanel.add(lblOriginalPrice);
+        originalPricePanel.add(lblOriginalPriceValue);
+        sneakerDetailsPanel.add(originalPricePanel);
+
+        JPanel retailPricePanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblRetailPrice = new JLabel("Retail Price: ");
+        lblRetailPrice.setFont(new Font("Arial", Font.BOLD, 18));
+        lblRetailPrice.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblRetailPriceValue = new JLabel("$150"); // Replace with the actual retail price value
+        lblRetailPriceValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblRetailPriceValue.setHorizontalAlignment(SwingConstants.LEFT);
+        retailPricePanel.add(lblRetailPrice);
+        retailPricePanel.add(lblRetailPriceValue);
+        sneakerDetailsPanel.add(retailPricePanel);
+
+        JPanel sellerPanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblSeller = new JLabel("Seller: ");
+        lblSeller.setFont(new Font("Arial", Font.BOLD, 18));
+        lblSeller.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblSellerValue = new JLabel("John Doe"); // Replace with the actual seller value
+        lblSellerValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblSellerValue.setHorizontalAlignment(SwingConstants.LEFT);
+        sellerPanel.add(lblSeller);
+        sellerPanel.add(lblSellerValue);
+        sneakerDetailsPanel.add(sellerPanel);
+
+        JPanel statusPanel = new JPanel(new GridLayout(1, 2));
+        JLabel lblStatus = new JLabel("Status: ");
+        lblStatus.setFont(new Font("Arial", Font.BOLD, 18));
+        lblStatus.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel lblStatusValue = new JLabel("Available"); // Replace with the actual status value
+        lblStatusValue.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblStatusValue.setHorizontalAlignment(SwingConstants.LEFT);
+        statusPanel.add(lblStatus);
+        statusPanel.add(lblStatusValue);
+        sneakerDetailsPanel.add(statusPanel);
+
+        JPanel buyPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JButton btnBuy = new JButton("Buy");
+        btnBuy.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(sneakerFrame, "You have purchased " + sneakerName + ".");
+            }
+        });
+        buyPanel.add(btnBuy);
+        sneakerDetailsPanel.add(buyPanel);
+
+        sneakerFrame.getContentPane().add(sneakerDetailsPanel);
+
+        return sneakerFrame;
+    }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
